@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  etcd:
+    image: "quay.io/coreos/etcd:v3.3"
+    environment:
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2381"
+      ETCDCTL_API: "3"
+      ALLOW_NONE_AUTHENTICATION: "yes"
+    ports:
+      - 2379:2379
+      - 2380:2380
+      - 4001:4001
+    volumes:
+      - juno_data/etcd:/etcd
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+    volumes:
+      - juno_data/mariadb/data:/var/lib/mysql
+      - juno_data/mariadb/conf.d:/etc/mysql/conf.d
+
+  prometheus:
+    image: juno-prometheus:latest
+    ports:
+      - "9090:9090"
+    depends_on:
+      - etcd
+    restart: on-failure
+
+  grafana:
+    image: juno-grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    restart: on-failure
+  
+volumes:
+  juno_data:
+    driver: local

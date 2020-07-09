@@ -31,13 +31,17 @@ sh ./install.sh
 ### docker 容器运行
 
 ```bash
-docker build -t juno-demo:v1 ./
+docker build -t juno-install:v1 ./
 
-docker run -itd  -name juno-demo -p 50000:50000  --privileged=true juno-install:v1 /usr/sbin/init
+docker run -itd  --name juno-demo -p 50000:50000  --privileged=true juno-install:v1 /usr/sbin/init
 
 docker exec -it juno-demo /bin/bash
 
 ```
+
+### docker-compose 方式运行
+
+todo
 
 ## 开启juno之旅
 
