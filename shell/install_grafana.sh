@@ -16,7 +16,6 @@ WantedBy=multi-user.target
 User=www
 Group=www
 WorkingDirectory=/home/www/server/grafana
-Type=forking
 TimeoutSec=0
 PermissionsStartOnly=true
 ExecStart=/home/www/server/grafana/bin/grafana-server  --config=/home/www/server/juno/config/grafana-default.ini --homepath=/home/www/server/grafana

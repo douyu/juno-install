@@ -17,7 +17,6 @@ WantedBy=multi-user.target
 User=www
 Group=www
 WorkingDirectory=/home/www/system/prometheus
-Type=forking
 TimeoutSec=0
 PermissionsStartOnly=true
 ExecStart=/home/www/system/prometheus/prometheus --config.file=/home/www/system/prometheus/prometheus.yml

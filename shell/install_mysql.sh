@@ -22,11 +22,9 @@ WantedBy=multi-user.target
 User=mysql
 Group=mysql
 WorkingDirectory=/home/www/system/mysql
-Type=forking
 TimeoutSec=0
 PermissionsStartOnly=true
-ExecStart=/home/www/system/mysql/bin/mysqld --defaults-file=/etc/my.cnf --basedir=/home/www/system/mysql --datadir=/home/www/system/mysql/data --plugin-dir=/home/www/system/mysql/lib/plugin --user=mysql  --log-error=/home/www/system/mysql/data/mysqld.log --pid-file=/home/www/system/mysql/data/mysql.pid --socket=/home/www/system/mysql/data/mysql.sock --open-files-limit=60000 --daemonize
-
+ExecStart=/home/www/system/mysql/bin/mysqld --defaults-file=/etc/my.cnf --basedir=/home/www/system/mysql --datadir=/home/www/system/mysql/data --plugin-dir=/home/www/system/mysql/lib/plugin --user=mysql  --log-error=/home/www/system/mysql/data/mysqld.log --pid-file=/home/www/system/mysql/data/mysql.pid --socket=/home/www/system/mysql/data/mysql.sock --open-files-limit=60000
 LimitNOFILE = 65535
 Restart=on-failure
 RestartSec=3

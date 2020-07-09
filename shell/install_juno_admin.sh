@@ -16,7 +16,6 @@ WantedBy=multi-user.target
 User=www
 Group=www
 WorkingDirectory=/home/www/server/juno
-Type=forking
 TimeoutSec=0
 PermissionsStartOnly=true
 ExecStart=/home/www/server/juno/bin/juno-admin  --config=/home/www/server/juno/config/single-region-admin.toml
