@@ -14,6 +14,7 @@
 
 ```bash
 git clone https://github.com/douyu/juno-install.git
+
 cd juno-install/
 ```
 
@@ -23,6 +24,7 @@ cd juno-install/
 
 ```bash
 cd shell
+
 sh ./install.sh
 ```
 
@@ -30,11 +32,10 @@ sh ./install.sh
 
 ```bash
 docker build -t juno-demo:v1 ./
+
 docker run -itd  -name juno-demo -p 50000:50000  --privileged=true juno-install:v1 /usr/sbin/init
 
 docker exec -it juno-demo /bin/bash
-
-
 
 ```
 
@@ -44,8 +45,11 @@ docker exec -it juno-demo /bin/bash
 
 使用如下账号进行登录
 
+```json
 username: admin
+
 password: admin
+```
 
 ## 相关组件
 
