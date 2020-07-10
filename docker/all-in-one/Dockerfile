@@ -1,5 +1,5 @@
 FROM centos
-RUN yum -y install wget openssh-clients git vim net-tools
+RUN yum -y install wget openssh-clients git vim net-tools gcc automake autoconf libtool make gcc-c++
 
 WORKDIR /root/juno-install/
 
