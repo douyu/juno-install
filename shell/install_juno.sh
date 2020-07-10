@@ -5,5 +5,5 @@ cd /home/www/server/juno && tar xvf juno_data_0.2.0.tar.gz
 sed -i 's/root:root/root:/' /home/www/server/juno/config/single-region-admin.toml
 sed -i 's/root:root/root:/' /home/www/server/juno/config/install.toml
 sed -i 's/root:root/root:/' /home/www/server/juno/config/multiple-region-admin.toml
-sed -i 's/root:root/root:/' /home/www/server/juno/config/grafana-default.ini
+sed -i 's/root:root/root:/' /home/www/server/juno/config/juno-grafana.ini
 

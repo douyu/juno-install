@@ -31,6 +31,10 @@ read -p "Install Juno Mock [y/n]: " opt_juno_mock
 opt_juno_admin=no
 read -p "Install Juno Admin [y/n]: " opt_juno_admin
 
+
+opt_juno_agent=no
+read -p "Install Juno Agent [y/n]: " opt_juno_agent
+
 install=no
 read -p "Start the installation [y/n]: " install
 
@@ -82,3 +86,7 @@ if [ "$opt_juno_admin" == "y" ];then
   ./install_juno_admin.sh
 fi
 
+
+if [ "$opt_juno_agent" == "y" ];then
+  ./install_juno_agent.sh
+fi
