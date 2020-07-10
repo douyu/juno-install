@@ -22,6 +22,8 @@ cd juno-install/
 
 ### 物理机运行
 
+此方式将通过shell脚本方式进行交互安装juno以及所依赖组件
+
 ```bash
 cd shell
 
@@ -30,8 +32,10 @@ sh ./install.sh
 
 ### docker 容器运行
 
+此方式将通过在一个容器内启动juno 以及所依赖组件
+
 ```bash
-docker build -t juno-install:v1 ./
+docker build -t juno-install:v1  -f ./docker/all-in-one/Dockerfile ./
 
 docker run -itd  --name juno-demo -p 50000:50000  --privileged=true juno-install:v1 /usr/sbin/init
 
@@ -40,6 +44,8 @@ docker exec -it juno-demo /bin/bash
 ```
 
 ### docker-compose 方式运行
+
+此方式将juno以及所依赖组件分容器进行启动
 
 todo
 
