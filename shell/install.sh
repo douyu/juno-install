@@ -35,6 +35,11 @@ read -p "Install Juno Admin [y/n]: " opt_juno_admin
 opt_juno_agent=no
 read -p "Install Juno Agent [y/n]: " opt_juno_agent
 
+
+opt_pprof=no
+read -p "Install Pprof [y/n]: " opt_pprof
+
+
 install=no
 read -p "Start the installation [y/n]: " install
 
@@ -90,4 +95,10 @@ fi
 
 if [ "$opt_juno_agent" == "y" ];then
   ./install_juno_agent.sh
+fi
+
+
+
+if [ "$opt_pprof" == "y" ];then
+  ./install_pprof.sh
 fi

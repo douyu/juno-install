@@ -9,6 +9,8 @@
 - etcd
 - prometheus
 - grafana
+- pprof
+- juno-agent(prometheus etcd watch) 
 
 ## 下载脚本
 

@@ -16,3 +16,5 @@ export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export GOPROXY=https://goproxy.cn/,direct
 END
+
+source ~/.bashrc
