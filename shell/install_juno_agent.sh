@@ -10,7 +10,7 @@ cd ${DOWNLOAD_PATH} && tar xvf ${APP_NAME}.tar.gz
 mv ${APP_NAME}/* ${APP_PATH_BIN}
 
 wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/0.2.0/juno-agent_data_0.2.0.tar.gz
-cp ${DOWNLOAD_PATH}/juno-data_0.2.0.tar.gz ${APP_PATH}
+cp ${DOWNLOAD_PATH}/juno-agent_data_0.2.0.tar.gz ${APP_PATH}
 cd ${APP_PATH} && tar xvf juno-agent_data_0.2.0.tar.gz
 
 chown -R www:www ${APP_PATH}

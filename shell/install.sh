@@ -74,16 +74,17 @@ if [ "$opt_graf" == "y" ];then
   ./install_grafana.sh
 fi
 
+# juno admin must at head
+if [ "$opt_juno_admin" == "y" ];then
+  ./install_juno_admin.sh
+fi
+
 if [ "$opt_juno_db" == "y" ];then
   ./install_juno_database.sh
 fi
 
 if [ "$opt_juno_mock" == "y" ];then
   ./install_juno_mock.sh
-fi
-
-if [ "$opt_juno_admin" == "y" ];then
-  ./install_juno_admin.sh
 fi
 
 
