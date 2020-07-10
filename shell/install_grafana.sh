@@ -4,6 +4,9 @@ cd /home/opt && tar -xzvf grafana-7.0.5.linux-amd64.tar.gz
 mv ./grafana-7.0.5/* /home/www/server/grafana
 
 chown -R www:www /home/www/server/grafana/
+cp /home/www/server/juno/config/juno-grafana.ini /home/www/system/grafana/
+
+
 cat > /etc/systemd/system/juno-grafana.service <<END
 [Unit]
 Description=Grafana Server
@@ -18,7 +21,7 @@ Group=www
 WorkingDirectory=/home/www/server/grafana
 TimeoutSec=0
 PermissionsStartOnly=true
-ExecStart=/home/www/server/grafana/bin/grafana-server  --config=/home/www/server/juno/config/grafana-default.ini --homepath=/home/www/server/grafana
+ExecStart=/home/www/server/grafana/bin/grafana-server  --config=/home/www/system/grafana/juno-grafana.ini --homepath=/home/www/server/grafana
 
 LimitNOFILE = 65535
 Restart=on-failure

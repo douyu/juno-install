@@ -4,6 +4,7 @@ cd /home/opt && tar -xzvf prometheus-2.19.2.linux-amd64.tar.gz
 mv ./prometheus-2.19.2.linux-amd64/* /home/www/system/prometheus
 
 chown -R www:www /home/www/system/prometheus/
+cp /home/www/server/juno/config/juno-prometheus.yml /home/www/system/prometheus/
 
 cat > /etc/systemd/system/juno-prometheus.service <<END
 [Unit]
@@ -19,7 +20,7 @@ Group=www
 WorkingDirectory=/home/www/system/prometheus
 TimeoutSec=0
 PermissionsStartOnly=true
-ExecStart=/home/www/system/prometheus/prometheus --config.file=/home/www/system/prometheus/prometheus.yml
+ExecStart=/home/www/system/prometheus/prometheus --config.file=/home/www/system/prometheus/juno-prometheus.yml
 
 LimitNOFILE = 65535
 Restart=on-failure
