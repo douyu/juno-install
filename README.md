@@ -71,6 +71,8 @@ mysql -uroot
 etcdctl get "" --prefix
 查看go
 go version
+查看pprof
+go tool pprof -http=":8081" profile
 ```
 
 ## 相关组件
