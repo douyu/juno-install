@@ -19,13 +19,16 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: test
     volumes:
-      - juno_data/mariadb/data:/var/lib/mysql
-      - juno_data/mariadb/conf.d:/etc/mysql/conf.d
+      - juno_data/mysql/data:/var/lib/mysql
+      - juno_data/mysql/conf.d:/etc/mysql/conf.d
 
   prometheus:
-    image: juno-prometheus:latest
+    image: prom/prometheus:latest
+    restart: always
+    volumes:
+      - juno_data/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     depends_on:
@@ -33,7 +36,10 @@ services:
     restart: on-failure
 
   grafana:
-    image: juno-grafana:latest
+    image: grafana/grafana:latest
+    restart: always
+    volumes:
+      - juno_data/grafana/:/etc/grafana/conf/
     ports:
       - "3000:3000"
     depends_on:
