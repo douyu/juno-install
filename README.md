@@ -4,11 +4,11 @@
 
 脚本将自动配置juno所需要依赖的服务组件
 包括：
-
+- golang
 - mysql
 - etcd
-- grafana
 - prometheus
+- grafana
 
 ## 下载脚本
 
@@ -59,6 +59,16 @@ todo
 username: admin
 
 password: admin
+```
+
+## 容器内debug
+```
+查看mysql
+mysql -uroot
+查看etcd里内容
+etcdctl get "" --prefix
+查看go
+go version
 ```
 
 ## 相关组件

@@ -13,6 +13,9 @@ read -p "Install Etcd [y/n]: " opt_etcd
 opt_prom=no
 read -p "Install Prometheus [y/n]: " opt_prom
 
+opt_go=no
+read -p "Install Golang [y/n]: " opt_go
+
 opt_graf_db=no
 read -p "Install Grafana Database [y/n]: " opt_graf_db
 
@@ -45,6 +48,10 @@ fi
 if [ "$opt_mysql" == "y" ];then
   ./install_mysql.sh
   sleep 2
+fi
+
+if [ "$opt_go" == "y" ];then
+  ./install_go.sh
 fi
 
 if [ "$opt_etcd" == "y" ];then

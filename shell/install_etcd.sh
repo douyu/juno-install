@@ -28,6 +28,11 @@ RestartPreventExitStatus=1
 PrivateTmp=false
 END
 
+cat >> ~/.bashrc <<END
+export ETCDCTL_API=3
+export PATH=$PATH:/home/www/system/etcd
+END
+
 systemctl enable juno-etcd.service
 systemctl start juno-etcd.service
 
