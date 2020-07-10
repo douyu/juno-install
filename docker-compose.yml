@@ -45,5 +45,22 @@ services:
     depends_on:
       - prometheus
     restart: on-failure
+
   juno-admin:
-    image: grafana/grafana:latest
+    # image: 
+    build: 
+      context: ./docker/juno-admin/
+    restart: always
+    volumes:
+      - ./config/juno/:/root/juno
+    depends_on:
+      - mysql
+      - prometheus
+      - etcd
+    restart: on-failure
+
+# docker network create juno-world
+# networks:
+#   default:
+#     external:
+#       name: juno-world
