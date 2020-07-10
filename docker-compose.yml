@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   etcd:
-    image: "quay.io/coreos/etcd:v3.3"
+    image: "quay.io/coreos/etcd:v3.4.9"
     environment:
       ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
@@ -12,23 +12,23 @@ services:
       - 2379:2379
       - 2380:2380
       - 4001:4001
-    volumes:
-      - juno_data/etcd:/etcd
+    # volumes:
+    #   - ./config/etcd:/etcd
 
   mysql:
     image: mysql:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: test
-    volumes:
-      - juno_data/mysql/data:/var/lib/mysql
-      - juno_data/mysql/conf.d:/etc/mysql/conf.d
+    # volumes:
+    #   - ./config/mysql/data:/var/lib/mysql
+    #   - ./config/mysql/conf.d:/etc/mysql/conf.d
 
   prometheus:
     image: prom/prometheus:latest
     restart: always
     volumes:
-      - juno_data/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     depends_on:
@@ -39,13 +39,9 @@ services:
     image: grafana/grafana:latest
     restart: always
     volumes:
-      - juno_data/grafana/:/etc/grafana/conf/
+      - ./config/grafana/:/etc/grafana/conf/
     ports:
       - "3000:3000"
     depends_on:
       - prometheus
     restart: on-failure
-  
-volumes:
-  juno_data:
-    driver: local
