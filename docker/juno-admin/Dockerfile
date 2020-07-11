@@ -21,6 +21,6 @@ RUN cat /root/juno/config/single-region-admin.toml
 EXPOSE 50002 50004 50010
 
 
-# CMD ["/usr/local/bin/juno-admin", "--config=./single-region-admin.toml"]
-CMD ["/sbin/init"]
+CMD ["/usr/local/bin/juno-admin", "--config=./single-region-admin.toml"]
+# CMD ["/sbin/init"]
 

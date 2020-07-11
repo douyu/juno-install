@@ -33,7 +33,7 @@ services:
     image: prom/prometheus:latest
     restart: always
     volumes:
-      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/juno-prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     depends_on:
@@ -43,15 +43,14 @@ services:
   grafana:
     image: grafana/grafana:latest
     restart: always
-    # volumes:
-    #   - ./config/grafana/:/etc/grafana/conf/
+    volumes:
+      - ./config/grafana/juno-grafana.ini:/etc/grafana/conf/defaults.ini
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - juno-admin
       - prometheus
-    # command: grafana-server  --config=/home/www/system/grafana/juno-grafana.ini --homepath=/home/www/server/grafana
-
+      
   juno-admin:
     # image: 
     build: 
@@ -68,7 +67,7 @@ services:
       - etcd
 
 # docker network create juno-world
-networks:
-  default:
-    external:
-      name: juno-world
+# networks:
+#   default:
+#     external:
+#       name: juno-world
