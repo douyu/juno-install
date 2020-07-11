@@ -16,7 +16,11 @@ RUN wget -P /root/juno/ http://jupiter.douyu.com/download/${JUNO_VERSION}/juno-a
     cd /root/juno/ && tar xvf juno-admin_${JUNO_VERSION}_linux_amd64.tar.gz && \
     mv /root/juno/juno-admin_${JUNO_VERSION}_linux_amd64/* /usr/local/bin/
 
-EXPOSE 50000
+RUN /usr/local/bin/juno-admin --version
+RUN cat /root/juno/config/single-region-admin.toml
+EXPOSE 50002 50004 50010
 
-CMD ["/usr/local/bin/juno-admin", "--config=/root/juno/config/single-region-admin.toml"]
+
+# CMD ["/usr/local/bin/juno-admin", "--config=./single-region-admin.toml"]
+CMD ["/sbin/init"]
 

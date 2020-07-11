@@ -6,13 +6,6 @@
   token = "123456"
   secretKey = "ASDFASDFASDF"
 
-  [app.registry]
-
-    [app.registry.etcd]
-      endpoints = ["127.0.0.1:2379"]
-      timeout = "2s"
-
-
 [confgo]
   dir = "/tmp/www/server"
   prefix = "juno-agent"
@@ -31,14 +24,18 @@
   secret = "ldfgoqnf935nvav34"
   type = ""
 
-
+[register]
+    enable=true
+    connectTimeout = "1s"
+    endpoints=["etcd:2379"]
+    secure = false
 
 #################################### Server ##############################
 [server.http]
     # The ip address to bind to, empty will bind to all interfaces
     host = "0.0.0.0"
     # The http port to use
-    port = 50000
+    port = 50002
     # The public facing domain name used to access grafana from a browser
     domain = "localhost"
     # enable gzip
@@ -58,7 +55,7 @@
     enable = true
     connMaxLifetime = "300s"
     debug = true
-    dsn = "root:@tcp(127.0.0.1:3306)/juno?charset=utf8&parseTime=True&loc=Local&readTimeout=1s&timeout=1s&writeTimeout=3s"
+    dsn = "root:root@tcp(mysql:3306)/juno?charset=utf8&parseTime=True&loc=Local&readTimeout=1s&timeout=1s&writeTimeout=3s"
     level = "panic"
     maxIdleConns = 50
     maxOpenConns = 100
@@ -67,7 +64,7 @@
 [proxy]
 
   [proxy.etcd]
-    endpoints = ["127.0.0.1:2379"]
+    endpoints = ["etcd:2379"]
 
   [proxy.http]
     disableKeepAlives = true
@@ -79,7 +76,7 @@
  [proxy.etcdv3]
 
     [proxy.etcdv3.confgo]
-      endpoints = ["127.0.0.1:2379"]
+      endpoints = ["etcd:2379"]
 [auth]
     # Login cookie name
     loginCookieName = "juno_session"

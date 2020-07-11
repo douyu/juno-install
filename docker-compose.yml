@@ -1,11 +1,12 @@
 version: '3'
 services:
+
   etcd:
     image: "quay.io/coreos/etcd:v3.4.9"
+    restart: always
     environment:
       ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2381"
       ETCDCTL_API: "3"
       ALLOW_NONE_AUTHENTICATION: "yes"
     ports:
@@ -19,11 +20,15 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: test
-    # volumes:
+      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: root
+      # MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ./config/initdb:/docker-entrypoint-initdb.d
     #   - ./config/mysql/data:/var/lib/mysql
     #   - ./config/mysql/conf.d:/etc/mysql/conf.d
-
+    
+    
   prometheus:
     image: prom/prometheus:latest
     restart: always
@@ -38,29 +43,32 @@ services:
   grafana:
     image: grafana/grafana:latest
     restart: always
-    volumes:
-      - ./config/grafana/:/etc/grafana/conf/
+    # volumes:
+    #   - ./config/grafana/:/etc/grafana/conf/
     ports:
       - "3000:3000"
     depends_on:
+      - juno-admin
       - prometheus
-    restart: on-failure
+    # command: grafana-server  --config=/home/www/system/grafana/juno-grafana.ini --homepath=/home/www/server/grafana
 
   juno-admin:
     # image: 
     build: 
       context: ./docker/juno-admin/
     restart: always
+    ports:
+      - 50002:50002
+      - 50004:50004
     volumes:
       - ./config/juno/:/root/juno
     depends_on:
       - mysql
       - prometheus
       - etcd
-    restart: on-failure
 
 # docker network create juno-world
-# networks:
-#   default:
-#     external:
-#       name: juno-world
+networks:
+  default:
+    external:
+      name: juno-world
