@@ -44,7 +44,7 @@ services:
     image: grafana/grafana:latest
     restart: always
     volumes:
-      - ./config/grafana/juno-grafana.ini:/etc/grafana/conf/defaults.ini
+      - ./config/grafana/juno-grafana.ini:/usr/share/grafana/conf/defaults.ini
     ports:
       - 3000:3000
     depends_on:
@@ -60,7 +60,7 @@ services:
       - 50002:50002
       - 50004:50004
     volumes:
-      - ./config/juno/:/root/juno
+      - ./config/juno/:/root/juno/config
     depends_on:
       - mysql
       - prometheus
