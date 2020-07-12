@@ -23,6 +23,8 @@ services:
       # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_ROOT_PASSWORD: root
       # MYSQL_ROOT_HOST: "%"
+    security_opt:
+     - seccomp:unconfined
     volumes:
       - ./config/initdb:/docker-entrypoint-initdb.d
     #   - ./config/mysql/data:/var/lib/mysql

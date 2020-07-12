@@ -49,11 +49,13 @@ docker exec -it juno-demo /bin/bash
 
 此方式将juno以及所依赖组件分容器进行启动
 
-todo
+```bash
+docker-compose up --build
+```
 
 ## 开启juno之旅
 
-访问 http://127.0.0.1:50000
+访问 http://127.0.0.1:50002
 
 使用如下账号进行登录
 
