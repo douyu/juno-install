@@ -46,7 +46,7 @@ services:
     image: grafana/grafana:latest
     restart: always
     volumes:
-      - ./config/grafana/juno-grafana.ini:/usr/share/grafana/conf/defaults.ini
+      - ./config/grafana/juno-grafana.ini:/etc/grafana/grafana.ini
     ports:
       - 3000:3000
     depends_on:
@@ -70,6 +70,6 @@ services:
 
 # docker network create juno-world
 # networks:
-#   default:
-#     external:
-#       name: juno-world
+  # default:
+  #   external:
+  #     name: juno-world
