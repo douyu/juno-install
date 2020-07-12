@@ -45,6 +45,19 @@ docker exec -it juno-demo /bin/bash
 
 ```
 
+#### 容器内debug命令
+
+```bash
+#查看mysql
+mysql -uroot
+#查看etcd里内容
+etcdctl get "" --prefix
+#查看go
+go version
+#查看pprof
+go tool pprof -http=":8081" profile
+```
+
 ### docker-compose 方式运行
 
 此方式将juno以及所依赖组件分容器进行启动
@@ -52,6 +65,23 @@ docker exec -it juno-demo /bin/bash
 ```bash
 docker-compose up --build
 ```
+
+执行初始化juno
+
+```bash
+docker exec -it  juno-install_juno-admin_1 docker_juno_init.sh
+```
+
+mock数据
+
+```bash
+docker exec -it  juno-install_juno-admin_1 docker_juno_mock.sh
+```
+
+Note
+
+- 相关配置文件在config目录中
+- 若需登陆grafana修改 juno管理界面-系统设置-Grafana地址 配置grafana地址为 "http://grafana:3000"
 
 ## 开启juno之旅
 
@@ -65,22 +95,10 @@ username: admin
 password: admin
 ```
 
-## 容器内debug
-```
-查看mysql
-mysql -uroot
-查看etcd里内容
-etcdctl get "" --prefix
-查看go
-go version
-查看pprof
-go tool pprof -http=":8081" profile
-```
-
 ## 相关组件
 
-grafana http://127.0.0.1:5010/grafana
+grafana http://127.0.0.1:50002/grafana
 
-etcd
+etcd 
 
 prometheus 
