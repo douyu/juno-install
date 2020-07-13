@@ -1,5 +1,6 @@
 #!/bin/bash
 
+JUNO_VER="0.2.0"
 
 opt_env=no
 read -p "Install Env [y/n]: " opt_env
@@ -47,11 +48,19 @@ if [ "$install" != "y" ];then
   exit
 fi
 
+# import shell script
+
+. init.sh
+. install_dir.sh
+. install_juno.sh
+. install_juno_admin.sh
+. install_juno_agent.sh
 
 if [ "$opt_env" == "y" ];then
-./install_dir.sh
-./install_env.sh
-./install_juno.sh
+  Install_Env_Tools
+  Install_Dir
+  # todo check and move Install_Juno_Data to opt_juno_admin ?
+  Install_Juno_Data
 fi
 
 if [ "$opt_mysql" == "y" ];then
@@ -81,7 +90,7 @@ fi
 
 # juno admin must at head
 if [ "$opt_juno_admin" == "y" ];then
-  ./install_juno_admin.sh
+  Install_Juno_Admin
 fi
 
 if [ "$opt_juno_db" == "y" ];then
@@ -92,12 +101,9 @@ if [ "$opt_juno_mock" == "y" ];then
   ./install_juno_mock.sh
 fi
 
-
 if [ "$opt_juno_agent" == "y" ];then
-  ./install_juno_agent.sh
+  Install_Juno_Agent
 fi
-
-
 
 if [ "$opt_pprof" == "y" ];then
   ./install_pprof.sh

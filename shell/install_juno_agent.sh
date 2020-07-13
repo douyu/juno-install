@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
-DOWNLOAD_PATH=/home/opt
-APP_PATH=/home/www/server/juno-agent
-APP_PATH_BIN=${APP_PATH}/bin
-APP_NAME=juno-agent_0.2.0_linux_amd64
 
-mkdir -p ${APP_PATH_BIN}
-wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/0.2.0/${APP_NAME}.tar.gz
-cd ${DOWNLOAD_PATH} && tar xvf ${APP_NAME}.tar.gz
-mv ${APP_NAME}/* ${APP_PATH_BIN}
+Install_Juno_Agent()
+{
+    DOWNLOAD_PATH=/home/opt
+    APP_PATH=/home/www/server/juno-agent
+    APP_PATH_BIN=${APP_PATH}/bin
+    APP_NAME=juno-agent_${JUNO_VER}_linux_amd64
 
-wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/0.2.0/juno-agent_data_0.2.0.tar.gz
-cp ${DOWNLOAD_PATH}/juno-agent_data_0.2.0.tar.gz ${APP_PATH}
-cd ${APP_PATH} && tar xvf juno-agent_data_0.2.0.tar.gz
+    mkdir -p ${APP_PATH_BIN}
+    wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${JUNO_VER}/${APP_NAME}.tar.gz
+    cd ${DOWNLOAD_PATH} && tar xvf ${APP_NAME}.tar.gz
+    mv ${APP_NAME}/* ${APP_PATH_BIN}
 
-chown -R www:www ${APP_PATH}
+    wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${JUNO_VER}/juno-agent_data_${JUNO_VER}.tar.gz
+    cp ${DOWNLOAD_PATH}/juno-agent_data_${JUNO_VER}.tar.gz ${APP_PATH}
+    cd ${APP_PATH} && tar xvf juno-agent_data_${JUNO_VER}.tar.gz
 
-cat > /etc/systemd/system/juno-agent.service <<END
+    chown -R www:www ${APP_PATH}
+
+    cat > /etc/systemd/system/juno-agent.service <<END
 [Unit]
 Description=Juno Agent
 After=network.target
@@ -43,5 +46,6 @@ RestartPreventExitStatus=1
 PrivateTmp=false
 END
 
-systemctl enable juno-agent.service
-systemctl start juno-agent.service
+    systemctl enable juno-agent.service
+    systemctl start juno-agent.service
+}

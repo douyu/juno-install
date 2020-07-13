@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-wget -P /home/www/server http://jupiter.douyu.com/download/0.2.0/juno-admin_0.2.0_linux_amd64.tar.gz
-cd /home/www/server && tar xvf juno-admin_0.2.0_linux_amd64.tar.gz
-mv juno-admin_0.2.0_linux_amd64/* /home/www/server/juno/bin
 
+Install_Juno_Admin()
+{
+    wget -P /home/www/server http://jupiter.douyu.com/download/${JUNO_VER}/juno-admin_${JUNO_VER}_linux_amd64.tar.gz
+    cd /home/www/server && tar xvf juno-admin_${JUNO_VER}_linux_amd64.tar.gz
+    mv juno-admin_${JUNO_VER}_linux_amd64/* /home/www/server/juno/bin
 
-cat > /etc/systemd/system/juno-admin.service <<END
+    cat > /etc/systemd/system/juno-admin.service <<END
 [Unit]
 Description=Juno Admin Server
 After=network.target
@@ -27,6 +29,7 @@ RestartPreventExitStatus=1
 PrivateTmp=false
 END
 
-systemctl enable juno-admin.service
-systemctl start juno-admin.service
+    systemctl enable juno-admin.service
+    systemctl start juno-admin.service
+}
 
