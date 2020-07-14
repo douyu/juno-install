@@ -2,19 +2,17 @@
 
 Install_Juno_Agent()
 {
-    DOWNLOAD_PATH=/home/opt
     APP_PATH=/home/www/server/juno-agent
     APP_PATH_BIN=${APP_PATH}/bin
     APP_NAME=juno-agent_${JUNO_VER}_linux_amd64
 
     mkdir -p ${APP_PATH_BIN}
     wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${JUNO_VER}/${APP_NAME}.tar.gz
-    cd ${DOWNLOAD_PATH} && tar xvf ${APP_NAME}.tar.gz
-    mv ${APP_NAME}/* ${APP_PATH_BIN}
+    tar xvf ${DOWNLOAD_PATH}/${APP_NAME}.tar.gz -C ${APP_PATH}
+    mv /home/www/server/juno-agent/${APP_NAME}/* ${APP_PATH_BIN}
 
     wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${JUNO_VER}/juno-agent_data_${JUNO_VER}.tar.gz
-    cp ${DOWNLOAD_PATH}/juno-agent_data_${JUNO_VER}.tar.gz ${APP_PATH}
-    cd ${APP_PATH} && tar xvf juno-agent_data_${JUNO_VER}.tar.gz
+    tar xvf ${DOWNLOAD_PATH}/juno-agent_data_${JUNO_VER}.tar.gz -C ${APP_PATH}
 
     chown -R www:www ${APP_PATH}
 

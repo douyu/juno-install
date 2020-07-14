@@ -8,13 +8,3 @@ wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${APP_NAME}.tar.gz
 cd ${DOWNLOAD_PATH} && tar -xzvf ${APP_NAME}.tar.gz
 mv ${APP_NAME}/* ${APP_PATH}
 
-cat >> ~/.bashrc <<END
-export GO111MODULE=on
-export GOROOT=/home/www/system/go
-export GOPATH=/home/www/server/go
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-export GOPROXY=https://goproxy.cn/,direct
-END
-
-source ~/.bashrc

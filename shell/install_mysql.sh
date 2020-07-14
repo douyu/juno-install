@@ -74,12 +74,6 @@ log-error=/var/log/mariadb/mariadb.log
 pid-file=/var/run/mariadb/mariadb.pid
 END
 
-cat >> ~/.bashrc <<END
-export PATH=$PATH:/home/www/system/mysql/bin
-END
-
-source ~/.bashrc
-
 systemctl enable juno-mysql.service
 systemctl start juno-mysql.service
 

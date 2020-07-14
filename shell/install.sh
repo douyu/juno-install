@@ -1,6 +1,7 @@
 #!/bin/bash
 
 JUNO_VER="0.2.0"
+DOWNLOAD_PATH="/home/opt"
 
 opt_env=no
 read -p "Install Env [y/n]: " opt_env

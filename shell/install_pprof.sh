@@ -16,10 +16,3 @@ mv ${DOWNLOAD_PATH}/${APP_NAME}/checkGo.sh ${APP_PATH}
 mv ${DOWNLOAD_PATH}/${APP_NAME}/checkGraphviz.sh ${APP_PATH}
 mv ${DOWNLOAD_PATH}/${APP_NAME}/pprof.sh ${APP_PATH}
 chown -R www:www ${APP_PATH}
-
-cat >> ~/.bashrc <<END
-export PATH=$PATH:/home/www/system/pprof/graphviz/bin
-export PATH=$PATH:/home/www/system/pprof/FlameGraph
-END
-
-source ~/.bashrc

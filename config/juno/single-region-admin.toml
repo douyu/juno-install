@@ -35,14 +35,14 @@
     # The ip address to bind to, empty will bind to all interfaces
     host = "0.0.0.0"
     # The http port to use
-    port = 50002
+    port = 50000
     # The public facing domain name used to access grafana from a browser
     domain = "localhost"
     # enable gzip
     enableGzip = false
 [server.govern]
     # The ip address to bind to, empty will bind to all interfaces
-    host = "0.0.0.0"
+    host = "127.0.0.1"
     # The http port to use
     port = 50004
     # The public facing domain name used to access grafana from a browser

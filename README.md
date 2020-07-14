@@ -85,7 +85,7 @@ Note
 
 ## 开启juno之旅
 
-访问 http://127.0.0.1:50002
+访问 http://127.0.0.1:50000
 
 使用如下账号进行登录
 
@@ -97,7 +97,7 @@ password: admin
 
 ## 相关组件
 
-grafana http://127.0.0.1:50002/grafana
+grafana http://127.0.0.1:50000/grafana
 
 etcd 
 
