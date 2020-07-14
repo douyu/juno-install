@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 wget -P /home/opt http://jupiter.douyu.com/download/prometheus-2.19.2.linux-amd64.tar.gz
 cd /home/opt && tar -xzvf prometheus-2.19.2.linux-amd64.tar.gz
-mv ./prometheus-2.19.2.linux-amd64/* /home/www/system/prometheus
+mv ./prometheus-2.19.2.linux-amd64/* /home/www/system/prometheus/
 
 chown -R www:www /home/www/system/prometheus/
 cp /home/www/server/juno/config/juno-prometheus.yml /home/www/system/prometheus/

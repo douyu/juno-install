@@ -4,7 +4,7 @@ Install_Juno_Admin()
 {
     wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${JUNO_VER}/juno-admin_${JUNO_VER}_linux_amd64.tar.gz
     tar -xzvf ${DOWNLOAD_PATH}/juno-admin_${JUNO_VER}_linux_amd64.tar.gz -C /home/www/server/juno/
-    mv /home/www/server/juno/juno-admin_${JUNO_VER}_linux_amd64/* /home/www/server/juno/bin
+    mv /home/www/server/juno/juno-admin_${JUNO_VER}_linux_amd64/* /home/www/server/juno/bin/
     cat > /etc/systemd/system/juno-admin.service <<END
 [Unit]
 Description=Juno Admin Server
@@ -14,8 +14,9 @@ After=network.target
 WantedBy=multi-user.target
 
 [Service]
-User=www
-Group=www
+User=root
+Group=root
+Environment="PATH=$PATH:/home/www/system/go/bin:/home/www/system/pprof/graphviz/bin:/home/www/system/pprof/FlameGraph"
 WorkingDirectory=/home/www/server/juno
 TimeoutSec=0
 PermissionsStartOnly=true

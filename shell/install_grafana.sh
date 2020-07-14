@@ -2,7 +2,7 @@
 wget -P /home/opt http://jupiter.douyu.com/download/grafana-7.0.5.linux-amd64.tar.gz
 mkdir -p /home/www/server/grafana
 cd /home/opt && tar -xzvf grafana-7.0.5.linux-amd64.tar.gz
-mv ./grafana-7.0.5/* /home/www/server/grafana
+mv ./grafana-7.0.5/* /home/www/server/grafana/
 
 chown -R www:www /home/www/server/grafana/
 cp /home/www/server/juno/config/juno-grafana.ini /home/www/server/grafana/

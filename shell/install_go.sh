@@ -6,5 +6,5 @@ APP_NAME=go1.14.4.linux-amd64
 mkdir -p ${APP_PATH}
 wget -P ${DOWNLOAD_PATH} http://jupiter.douyu.com/download/${APP_NAME}.tar.gz
 cd ${DOWNLOAD_PATH} && tar -xzvf ${APP_NAME}.tar.gz
-mv ${APP_NAME}/* ${APP_PATH}
+mv go/* ${APP_PATH}
 
