@@ -20,7 +20,7 @@ Environment="PATH=$PATH:/home/www/system/go/bin:/home/www/system/pprof/graphviz/
 WorkingDirectory=/home/www/server/juno
 TimeoutSec=0
 PermissionsStartOnly=true
-ExecStart=/home/www/server/juno/bin/juno-admin  --config=/home/www/server/juno/config/single-region-admin.toml --host=172.18.233.233
+ExecStart=/home/www/server/juno/bin/juno-admin  --config=/home/www/server/juno/config/single-region-admin.toml
 
 LimitNOFILE = 65535
 Restart=on-failure

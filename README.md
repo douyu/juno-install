@@ -39,7 +39,7 @@ sh ./install.sh
 ```bash
 docker build -t juno-install:v1  -f ./docker/all-in-one/Dockerfile ./
 
-docker run -itd  --name juno-demo -p 50000:50000  --net shadownet --ip 172.18.233.233 --privileged=true juno-install:v1 /usr/sbin/init
+docker run -itd  --name juno-demo -p 50000:50000 -p 50004:50004 --privileged=true juno-install:v1 /usr/sbin/init
 
 docker exec -it juno-demo /bin/bash
 
@@ -57,7 +57,7 @@ etcdctl get "" --prefix
 #查看go
 go version
 #查看pprof
-go tool pprof -http=":8081" http://172.18.233.233:50004/debug/pprof/profile
+go tool pprof -http=":8081" http://127.0.0.1:50004/debug/pprof/profile
 ```
 
 ### docker-compose 方式运行
