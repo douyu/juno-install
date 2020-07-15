@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:7.2.1511
 
 ENV JUNO_VERSION=0.2.0
 

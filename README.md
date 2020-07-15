@@ -34,14 +34,16 @@ sh ./install.sh
 
 ### docker 容器运行
 
-此方式将通过在一个容器内启动juno 以及所依赖组件
+此方式将通过在一个容器内启动juno以及所依赖组件
 
 ```bash
 docker build -t juno-install:v1  -f ./docker/all-in-one/Dockerfile ./
 
-docker run -itd  --name juno-demo -p 50000:50000  --privileged=true juno-install:v1 /usr/sbin/init
+docker run -itd  --name juno-demo -p 50000:50000  --net shadownet --ip 172.18.233.233 --privileged=true juno-install:v1 /usr/sbin/init
 
 docker exec -it juno-demo /bin/bash
+
+./install.sh
 
 ```
 
@@ -55,7 +57,7 @@ etcdctl get "" --prefix
 #查看go
 go version
 #查看pprof
-go tool pprof -http=":8081" profile
+go tool pprof -http=":8081" http://172.18.233.233:50004/debug/pprof/profile
 ```
 
 ### docker-compose 方式运行
