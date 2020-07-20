@@ -1,5 +1,6 @@
 # config 目录说明
 
+```
 ├── grafana                     grafana 配置目录
 │   └── juno-grafana.ini        grafana 配置文件
 ├── initdb                      初始化sql
@@ -14,3 +15,4 @@
 │   └── single-region-admin.toml
 └── prometheus                  prometheus 配置目录
     └── juno-prometheus.yml     prometheus 配置文件
+```
