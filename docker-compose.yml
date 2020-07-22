@@ -22,7 +22,7 @@ services:
     environment:
       # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_ROOT_PASSWORD: root
-      # MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_HOST: "%"
     security_opt:
      - seccomp:unconfined
     volumes:
@@ -46,7 +46,7 @@ services:
     image: grafana/grafana:latest
     restart: always
     volumes:
-      - ./config/grafana/juno-grafana.ini:/etc/grafana/grafana.ini
+      - ./config/juno/juno-grafana.ini:/etc/grafana/grafana.ini
     ports:
       - 3000:3000
     depends_on:
