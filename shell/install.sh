@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JUNO_VER="0.2.0"
+JUNO_VER="0.3.0"
 DOWNLOAD_PATH="/home/opt"
 
 opt_env=no
