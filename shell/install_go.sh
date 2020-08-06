@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 DOWNLOAD_PATH=/home/opt
 APP_PATH=/home/www/system/go
 APP_NAME=go1.14.4.linux-amd64

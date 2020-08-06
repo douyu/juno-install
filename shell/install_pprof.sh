@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 DOWNLOAD_PATH=/home/opt
 APP_PATH=/home/www/system/pprof
 APP_NAME=pprof

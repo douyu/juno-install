@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 wget -P /home/opt http://zy-res.oss-cn-hangzhou.aliyuncs.com/mysql/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz
 cd /home/opt && tar -xzvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz
 mv mysql-5.7.17-linux-glibc2.5-x86_64/* /home/www/system/mysql/
