@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget -P /home/opt http://jupiter.douyu.com/download/grafana-7.0.5.linux-amd64.tar.gz
+wget -P /home/opt https://dl.grafana.com/oss/release/grafana-7.0.5.linux-amd64.tar.gz
 mkdir -p /home/www/server/grafana
 cd /home/opt && tar -xzvf grafana-7.0.5.linux-amd64.tar.gz
 mv ./grafana-7.0.5/* /home/www/server/grafana/

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget -P /home/opt http://jupiter.douyu.com/download/etcd-v3.4.9-linux-amd64.tar.gz
+wget -P /home/opt https://github.com/etcd-io/etcd/releases/download/v3.4.9/etcd-v3.4.9-linux-amd64.tar.gz
 cd /home/opt && tar -xzvf etcd-v3.4.9-linux-amd64.tar.gz
 mv etcd-v3.4.9-linux-amd64/* /home/www/system/etcd/
 chown -R www:www /home/www/system/etcd/
