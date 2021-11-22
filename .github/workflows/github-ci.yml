@@ -1,8 +1,10 @@
-name: learn-github-actions
-on: [push]
+
+name: docker-compose-actions-workflow
+on: push
 jobs:
-  check-bats-version:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello world
-      - run: docker-compose up
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
