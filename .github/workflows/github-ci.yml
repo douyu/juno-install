@@ -9,9 +9,9 @@ jobs:
       - name: start juno assembly and juno service
         run: docker-compose up  -d --build
       - name: juno init
-        run: docker exec -it  juno-install_juno-admin_1 docker_juno_init.sh
+        run: docker exec -i  juno-install_juno-admin_1 docker_juno_init.sh
       - name: juno mock
-        run: docker exec -it  juno-install_juno-admin_1 docker_juno_mock.sh
+        run: docker exec -i  juno-install_juno-admin_1 docker_juno_mock.sh
       - name: docker ps
         run: docker ps
       - name: curl test
