@@ -50,7 +50,7 @@ docker exec -it juno-demo /bin/bash
 #### 容器内debug命令
 
 ```bash
-#查看mysql
+#查看mysql情况
 mysql -uroot
 #查看etcd里内容
 etcdctl get "" --prefix
