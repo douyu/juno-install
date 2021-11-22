@@ -11,4 +11,4 @@ jobs:
       - name: docker ps
         run: docker ps
       - name: curl test
-        run: curl localhost:50002
+        run: curl 127.0.0.1:50002
