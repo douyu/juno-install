@@ -6,7 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the stack
+      - name: start juno assembly and juno service
         run: docker-compose up -d
       - name: docker ps
         run: docker ps
+      - name: curl test
+        run: curl localhost:50002
