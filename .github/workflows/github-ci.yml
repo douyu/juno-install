@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
-      - run: ./../../ci.sh
+      - run: ./ci.sh
