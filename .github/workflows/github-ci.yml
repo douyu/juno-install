@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
-      - run: docker-compose -f ../../docker-compose.yml up
+      - run: ./../../ci.sh
