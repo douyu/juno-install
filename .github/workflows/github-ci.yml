@@ -8,6 +8,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: start juno assembly and juno service
         run: docker-compose up -d
+      - name: juno init
+        run: docker exec -it  juno-install_juno-admin_1 docker_juno_init.sh
+      - name: juno mock
+        run: docker exec -it  juno-install_juno-admin_1 docker_juno_mock.sh
       - name: docker ps
         run: docker ps
       - name: curl test
