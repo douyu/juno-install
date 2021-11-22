@@ -2,9 +2,11 @@
 name: docker-compose-actions-workflow
 on: push
 jobs:
-  test:
+  check-docker-compose:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker-compose up -d
+      - name: docker ps
+        run: docker ps
