@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: start juno assembly and juno service
-        run: docker-compose up --build
+        run: docker-compose up -d --build
       - name: docker ps
         run: docker ps
       - name: curl test
