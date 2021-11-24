@@ -7,10 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: start juno assembly and juno service
-        run: docker-compose up -d --build
+        run: docker-compose up --build -d
       - name: sleep 3s
         run: sleep 3
       - name: docker ps
-        run: docker ps
+        run: docker ps && docker exec -it  juno-install_juno-admin_1 docker_juno_init.sh
       - name: curl test
         run: curl 127.0.0.1:50002
