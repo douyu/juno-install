@@ -24,6 +24,6 @@ RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/i
 RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --mock=true" > /usr/local/bin/docker_juno_mock.sh && \
     chmod +x /usr/local/bin/docker_juno_mock.sh
 
-CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml"]
+CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml", "-host=0.0.0.0"]
 # CMD ["/sbin/init"]
 
