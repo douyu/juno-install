@@ -8,6 +8,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: start juno assembly and juno service
         run: docker-compose up -d --build
+      - name: sleep 3s
+        run: sleep 3
       - name: docker ps
         run: docker ps
       - name: curl test
