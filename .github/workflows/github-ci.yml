@@ -1,0 +1,14 @@
+
+name: docker-compose-actions-workflow
+on: push
+jobs:
+  check-docker-compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: start juno assembly and juno service
+        run: docker-compose up --build -d
+      - name: sleep 10s
+        run: sleep 10
+      - name: docker ps
+        run: docker

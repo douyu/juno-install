@@ -1,3 +1,4 @@
+#################################### APP Config #########################
 [app]
   secretKey = "ASDFASDFASDF" # hashStatecode
   mode = "single" # single without proxy, multiple with proxy
@@ -5,7 +6,6 @@
 [configure]
   dir = "/tmp/www/server"
   prefix = "juno-agent"
-
   [configure.agent]
     port = 50010
 
@@ -23,6 +23,7 @@
     async = false
     name = "biz.json" # 日志名称
     dir = "./logs"
+
 [session]
   maxAge = 172800
   secret = "ldfgoqnf935nvav34"
@@ -49,6 +50,14 @@
     host = "0.0.0.0"
     # The http port to use
     port = 50004
+
+#################################### Jupiter Config #########################
+[jupiter]
+    [jupiter.cron]
+        [jupiter.cron.parse]
+        withSeconds = false
+        concurrentDelay = 10
+        immediatelyRun = false
 
 #################################### Database ##############################
 [database]
