@@ -35,6 +35,7 @@ jobs:
       - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
+          registry: ${{ env.REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
           dockerfile: ./docker/juno-admin/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
