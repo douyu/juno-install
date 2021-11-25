@@ -11,4 +11,4 @@ jobs:
       - name: sleep 10s
         run: sleep 10
       - name: docker ps
-        run: docker
+        run: docker ps
