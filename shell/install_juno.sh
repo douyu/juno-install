@@ -6,6 +6,7 @@ Install_Juno_Data()
     tar -zxvf ${DOWNLOAD_PATH}/v${JUNO_VER}.tar.gz -C ${DOWNLOAD_PATH}
     mv ${DOWNLOAD_PATH}/juno-${JUNO_VER}/data /home/www/server/juno/
     cp -r ./../config/juno/ /home/www/server/juno/config/
+    cp -r ./../config/grafana/ /home/www/server/juno/config/
     
     sed -i 's/root:root/root:/' /home/www/server/juno/config/single-region-admin.toml
     sed -i 's/root:root/root:/' /home/www/server/juno/config/install.toml
