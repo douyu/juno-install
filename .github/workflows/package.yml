@@ -39,6 +39,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
           dockerfile: ./docker/juno-admin/Dockerfile
-          tags: v1, latest
+          tags: latest
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
