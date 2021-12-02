@@ -1,17 +1,18 @@
 FROM centos:7.2.1511
 
-ENV JUNO_VERSION=0.2.0
+ENV JUNO_VERSION=0.4.12
 
 RUN yum -y install wget openssh-clients git vim net-tools
 
 WORKDIR /root/juno/
 
-RUN wget -P /root/juno http://jupiter.douyu.com/download/${JUNO_VERSION}/juno_data_${JUNO_VERSION}.tar.gz && \
-    cd /root/juno && tar xvf juno_data_${JUNO_VERSION}.tar.gz
+RUN wget -P /root/juno https://github.com/douyu/juno/releases/download/v${JUNO_VERSION}/juno_${JUNO_VERSION}_linux_amd64.tar.gz && \
+    cd /root/juno && tar xvf juno_${JUNO_VERSION}_linux_amd64.tar.gz && \
+    mv /root/juno/juno-admin /usr/local/bin/
 
-RUN wget -P /root/juno/ http://jupiter.douyu.com/download/${JUNO_VERSION}/juno-admin_${JUNO_VERSION}_linux_amd64.tar.gz && \
-    cd /root/juno/ && tar xvf juno-admin_${JUNO_VERSION}_linux_amd64.tar.gz && \
-    mv /root/juno/juno-admin_${JUNO_VERSION}_linux_amd64/* /usr/local/bin/
+RUN wget -P /root/juno https://github.com/douyu/juno/archive/refs/tags/v${JUNO_VERSION}.tar.gz && \
+    cd /root/juno && tar xvf v${JUNO_VERSION}.tar.gz && \
+    mv /root/juno/juno-${JUNO_VERSION}/data /root/juno/
 
 RUN /usr/local/bin/juno-admin --version
 
@@ -23,6 +24,6 @@ RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/i
 RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --mock=true" > /usr/local/bin/docker_juno_mock.sh && \
     chmod +x /usr/local/bin/docker_juno_mock.sh
 
-CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml"]
+CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml", "-host=0.0.0.0"]
 # CMD ["/sbin/init"]
 

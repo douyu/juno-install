@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JUNO_VER="0.4.0"
+JUNO_VER="0.4.12"
 DOWNLOAD_PATH="/home/opt"
 
 opt_env=no
@@ -51,11 +51,11 @@ fi
 
 # import shell script
 
-. init.sh
-. install_dir.sh
-. install_juno.sh
-. install_juno_admin.sh
-. install_juno_agent.sh
+. ./init.sh
+. ./install_dir.sh
+. ./install_juno.sh
+. ./install_juno_admin.sh
+. ./install_juno_agent.sh
 
 if [ "$opt_env" == "y" ];then
   Install_Env_Tools
