@@ -54,7 +54,7 @@ services:
       - prometheus
       
   juno-admin:
-    image: ghcr.io/denisyin66/juno-admin:v1
+    image: ghcr.io/douyu/juno-admin:latest
 #    build: 
 #      context: ./docker/juno-admin/
     restart: always
