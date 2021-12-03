@@ -1,8 +1,6 @@
-FROM centos:7.2.1511
+FROM alpine:latest
 
 ENV JUNO_VERSION=0.4.12
-
-RUN yum -y install wget openssh-clients git vim net-tools
 
 WORKDIR /root/juno/
 
