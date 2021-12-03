@@ -6,12 +6,11 @@ WORKDIR /root/juno/
 
 RUN wget -P /root/juno https://github.com/douyu/juno/releases/download/v${JUNO_VERSION}/juno_${JUNO_VERSION}_linux_amd64.tar.gz && \
     cd /root/juno && tar xvf juno_${JUNO_VERSION}_linux_amd64.tar.gz && \
-    chmod +x /root/juno/juno-admin && \
     mv /root/juno/juno-admin /usr/local/bin/ && \
     ls -al /root/juno/ && \
     ls -al /usr/local/bin/
 
-RUN /usr/local/bin/juno-admin --version
+RUN chmod +x /usr/local/bin/juno-admin && /usr/local/bin/juno-admin --version
 
 EXPOSE 50002 50004 50010
 
