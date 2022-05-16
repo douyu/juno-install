@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV JUNO_VERSION=0.4.12
+ENV JUNO_VERSION=0.4.14
 
 WORKDIR /root/juno/
 
@@ -22,10 +22,10 @@ RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/i
 RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --mock=true" > /usr/local/bin/docker_juno_mock.sh && \
     chmod +x /usr/local/bin/docker_juno_mock.sh
 
-CMD sh /usr/local/bin/docker_juno_init.sh
+RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/single-region-admin.toml --host=0.0.0.0" > /usr/local/bin/docker_juno_admin.sh && \
+    chmod +x /usr/local/bin/docker_juno_admin.sh
 
-CMD sh /usr/local/bin/docker_juno_mock.sh
+RUN echo -e "#!/bin/bash\n/bin/sh /usr/local/bin/docker_juno_admin.sh\n/bin/sh /usr/local/bin/docker_juno_init.sh\n/bin/sh /usr/local/bin/docker_juno_mock.sh" > /usr/local/bin/start.sh && \
+    chmod +x /usr/local/bin/start.sh
 
-CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml", "-host=0.0.0.0"]
-# CMD ["/sbin/init"]
-
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/start.sh"]

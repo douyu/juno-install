@@ -10,9 +10,9 @@ services:
       ETCDCTL_API: "3"
       ALLOW_NONE_AUTHENTICATION: "yes"
     ports:
-      - 2379:2379
-      - 2380:2380
-      - 4001:4001
+      - "2379:2379"
+      - "2380:2380"
+      - "4001:4001"
     # volumes:
     #   - ./config/etcd:/etcd
 
@@ -40,7 +40,6 @@ services:
       - "9090:9090"
     depends_on:
       - etcd
-    restart: on-failure
 
   grafana:
     image: grafana/grafana:latest
@@ -48,19 +47,19 @@ services:
     volumes:
       - ./config/juno/juno-grafana.ini:/etc/grafana/grafana.ini
     ports:
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - juno-admin
       - prometheus
       
   juno-admin:
     image: ghcr.io/douyu/juno-admin:latest
-#    build: 
+#    build:
 #      context: ./docker/juno-admin/
     restart: always
     ports:
-      - 50002:50002
-      - 50004:50004
+      - "50002:50002"
+      - "50004:50004"
     volumes:
       - ./config/juno/:/root/juno/config
     depends_on:
