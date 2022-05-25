@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: start juno assembly and juno service
-        run: docker-compose up --build -d
+        run: docker-compose -f docker-compose.build.yml build
       - name: sleep 10s
         run: sleep 10
       - name: docker ps
