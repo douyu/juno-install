@@ -21,12 +21,8 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Build Images
-        run: docker-compose -f docker-compose.build.yml up
-
-      - name: docker-compose down
-        run: docker-compose down
+      - name: Build images
+        run: docker-compose -f docker-compose.build.yml up --build -d
 
       - name: docker images
         run: docker images
