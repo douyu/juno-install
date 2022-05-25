@@ -2,7 +2,7 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['master']
+    branches: ['master','feat-doc']
 
 env:
   REGISTRY: ghcr.io
@@ -25,20 +25,21 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: image_name
-        run: echo ${{ env.IMAGE_NAME }}
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3.6.0
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker image
+      - name: Build and push juno-admin image
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
           registry: ${{ env.REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
           dockerfile: ./docker/juno-admin/Dockerfile
           tags: latest
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and push grafana image
+        uses: mr-smithers-excellent/docker-build-push@v5.6
+        with:
+          registry: ${{ env.REGISTRY }}
+          image: grafana/grafana:latest
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
