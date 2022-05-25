@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM dockerfile/ubuntu
+FROM alpine:latest
 
 # Install MySQL.
 RUN \
