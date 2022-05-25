@@ -25,6 +25,12 @@ jobs:
       - name: Build Images
         run: docker-compose -f docker-compose.build.yml up
 
+      - name: docker-compose down
+        run: docker-compose down
+
+      - name: docker images
+        run: docker images
+
       - name: Build and push juno-admin image
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
@@ -33,6 +39,3 @@ jobs:
           tags: latest
           username: ${{ secrets.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: docker images
-        run: docker images
