@@ -26,17 +26,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Build and push juno-admin image
-#        uses: mr-smithers-excellent/docker-build-push@v5.6
-#        with:
-#          registry: ${{ env.REGISTRY }}
-#          image: ${{ env.IMAGE_NAME }}
-#          dockerfile: ./docker/juno-admin/Dockerfile
-#          tags: latest
-#          username: ${{ secrets.GHCR_USERNAME }}
-#          password: ${{ secrets.GHCR_TOKEN }}
-
       - name: Build Images
-      run: docker-compose -f docker-compose.build.yml build
+        run: docker-compose -f docker-compose.build.yml build
+
       - name: Image ps
-      run: docker ps
+        run: docker ps
