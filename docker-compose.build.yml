@@ -4,15 +4,15 @@ services:
   etcd:
     image: quay.io/coreos/etcd:v3.4.9
 #    restart: always
-    environment:
-      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCDCTL_API: "3"
-      ALLOW_NONE_AUTHENTICATION: "yes"
-    ports:
-      - "2379:2379"
-      - "2380:2380"
-      - "4001:4001"
+#    environment:
+#      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+#      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
+#      ETCDCTL_API: "3"
+#      ALLOW_NONE_AUTHENTICATION: "yes"
+#    ports:
+#      - "2379:2379"
+#      - "2380:2380"
+#      - "4001:4001"
     # volumes:
     #   - ./config/etcd:/etcd
 
@@ -36,8 +36,8 @@ services:
 #    restart: always
 #    volumes:
 #      - ./config/prometheus/juno-prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
+#    ports:
+#      - "9090:9090"
 #    depends_on:
 #      - etcd
 

@@ -33,3 +33,6 @@ jobs:
           tags: latest
           username: ${{ secrets.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: docker images
+        run: docker images
