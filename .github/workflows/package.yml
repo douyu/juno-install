@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build Images
-        run: docker-compose -f docker-compose.build.yml build
+        run: docker-compose -f docker-compose.build.yml up
 
       - name: Build and push juno-admin image
         uses: mr-smithers-excellent/docker-build-push@v5.6
@@ -31,5 +31,5 @@ jobs:
           registry: ghcr.io
           image: juno-admin
           tags: latest
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          username: ${{ secrets.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
