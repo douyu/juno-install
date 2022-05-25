@@ -32,12 +32,12 @@ jobs:
           username: kekeyouxing
           password: ${{ secrets.ACCESS_TOKEN }}
 
-#      - name: Build and push mysql image
-#        uses: mr-smithers-excellent/docker-build-push@v5.6
-#        with:
-#          registry: ghcr.io
-#          dockerfile: ./docker/mysql/Dockerfile
-#          image: mysql
-#          tags: latest
-#          username: ${{ secrets.actor }}
-#          password: ${{ secrets.ACCESS_TOKEN }}
+      - name: Build and push mysql image
+        uses: mr-smithers-excellent/docker-build-push@v5.6
+        with:
+          registry: ghcr.io
+          dockerfile: ./docker/mysql/Dockerfile
+          image: mysql
+          tags: latest
+          username: kekeyouxing
+          password: ${{ secrets.ACCESS_TOKEN }}
