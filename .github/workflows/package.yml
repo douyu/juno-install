@@ -30,7 +30,7 @@ jobs:
           image: juno-admin
           tags: latest
           username: ${{ secrets.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Build and push mysql image
         uses: mr-smithers-excellent/docker-build-push@v5.6
@@ -40,4 +40,4 @@ jobs:
           image: mysql
           tags: latest
           username: ${{ secrets.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.ACCESS_TOKEN }}
