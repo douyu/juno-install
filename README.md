@@ -101,6 +101,6 @@ password: admin
 
 grafana http://127.0.0.1:50000/grafana
 
-etcd 
+etcd
 
-prometheus 
+prometheus
