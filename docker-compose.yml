@@ -24,13 +24,13 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: "%"
     security_opt:
-     - seccomp:unconfined
+      - seccomp:unconfined
     volumes:
       - ./config/initdb:/docker-entrypoint-initdb.d
     #   - ./config/mysql/data:/var/lib/mysql
     #   - ./config/mysql/conf.d:/etc/mysql/conf.d
-    
-    
+
+
   prometheus:
     image: prom/prometheus:latest
     restart: always
@@ -40,7 +40,6 @@ services:
       - "9090:9090"
     depends_on:
       - etcd
-    restart: on-failure
 
   grafana:
     image: grafana/grafana:latest
@@ -52,11 +51,11 @@ services:
     depends_on:
       - juno-admin
       - prometheus
-      
+
   juno-admin:
     image: ghcr.io/douyu/juno-admin:latest
-#    build: 
-#      context: ./docker/juno-admin/
+    #    build: 
+    #      context: ./docker/juno-admin/
     restart: always
     ports:
       - 50002:50002
@@ -67,9 +66,8 @@ services:
       - mysql
       - prometheus
       - etcd
-
-# docker network create juno-world
-# networks:
+  # docker network create juno-world
+  # networks:
   # default:
   #   external:
   #     name: juno-world
