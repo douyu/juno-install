@@ -60,7 +60,7 @@ go version
 go tool pprof -http=":8081" http://127.0.0.1:50004/debug/pprof/profile
 ```
 
-### docker-compose 方式运行
+### **docker-compose 方式运行（强烈推荐）**
 
 此方式将juno以及所依赖组件分容器进行启动
 
