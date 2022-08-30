@@ -2,10 +2,12 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - "master"
   pull_request:
-    branches: ["master"]
-      
+    branches:
+      - "master"
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: juno-admin
@@ -41,6 +43,5 @@ jobs:
           registry: ${{ env.REGISTRY }}
           image: ${{ env.IMAGE_NAME }}
           dockerfile: ./docker/juno-admin/Dockerfile
-          tags: latest
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
