@@ -39,7 +39,7 @@ sh ./install.sh
 ```bash
 docker build -t juno-install:v1  -f ./docker/all-in-one/Dockerfile ./
 
-docker run -itd  --name juno-demo -p 50000:50000 -p 50004:50004 --privileged=true juno-install:v1 /usr/sbin/init
+docker run -itd  --name juno-demo -p 50000:50000 -p 50002:50002 -p 50004:50004 --privileged=true juno-install:v1 /usr/sbin/init
 
 docker exec -it juno-demo /bin/bash
 
@@ -87,19 +87,18 @@ Note
 
 ## 开启juno之旅
 
-访问 http://127.0.0.1:50000
+访问 [http://127.0.0.1:50002](http://127.0.0.1:50002)
 
 使用如下账号进行登录
 
 ```json
 username: admin
-
 password: admin
 ```
 
 ## 相关组件
 
-grafana http://127.0.0.1:50000/grafana
+grafana [http://127.0.0.1:50002/grafana](http://127.0.0.1:50002/grafana)
 
 etcd
 
