@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV JUNO_VERSION=0.4.12
+ENV JUNO_VERSION=0.4.15
 
 WORKDIR /root/juno/
 
@@ -16,10 +16,10 @@ RUN ls -al /usr/local/bin/juno-admin && /usr/local/bin/juno-admin --version
 
 EXPOSE 50002 50004 50010
 
-RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --install=true" > /usr/local/bin/docker_juno_init.sh && \
+RUN echo -e "#!/bin/sh\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --install=true" > /usr/local/bin/docker_juno_init.sh && \
     chmod +x /usr/local/bin/docker_juno_init.sh
 
-RUN echo -e "#!/bin/bash\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --mock=true" > /usr/local/bin/docker_juno_mock.sh && \
+RUN echo -e "#!/bin/sh\n/usr/local/bin/juno-admin --config=/root/juno/config/install.toml --mock=true" > /usr/local/bin/docker_juno_mock.sh && \
     chmod +x /usr/local/bin/docker_juno_mock.sh
 
 CMD ["/usr/local/bin/juno-admin", "--config=./config/single-region-admin.toml", "-host=0.0.0.0"]
