@@ -1,5 +1,9 @@
 # juno-install
 
+## 【重要】此仓库已归档
+
+基于Docker-Compose实现一键启动，相关配置已迁移至 https://github.com/douyu/jupiter-layout/tree/main/deployment
+
 这是一个快速构建启动一个juno完整环境的工程.
 
 脚本将自动配置juno所需要依赖的服务组件
